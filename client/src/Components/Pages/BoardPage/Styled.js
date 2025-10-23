@@ -2,50 +2,67 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 	${(props) =>
-		props.isImage ? 'background-image: url(' + props.bgImage + ');' : 'background-color: ' + props.bgImage + ';'}
+		props.isImage ? 'background-image: url(' + props.bgImage + ');' : 'background: linear-gradient(135deg, ' + props.bgImage + ', ' + props.bgImage + 'dd);'}
 	background-repeat: no-repeat;
-	background-position: 50%;
-	zoom: 1;
-	padding-top: 3rem;
-	height: fit-content;
+	background-position: center;
 	background-size: cover;
+	background-attachment: fixed;
+	padding-top: 4rem;
+	min-height: 100vh;
+	position: relative;
+	
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.1);
+		z-index: 1;
+	}
+	
+	> * {
+		position: relative;
+		z-index: 2;
+	}
 `;
 
 export const ListContainer = styled.div`
 	box-sizing: border-box;
-	height: calc(100vh - 3rem - 52px);
+	min-height: calc(100vh - 4rem - 60px);
 	display: flex;
 	flex-direction: row;
-	padding: 0rem 1rem;
+	padding: var(--space-6);
+	gap: var(--space-4);
 	overflow-x: auto;
 	overflow-y: hidden;
 	white-space: nowrap;
-	zoom: 1;
-	/* width */
+	
+	/* Professional Scrollbar */
 	::-webkit-scrollbar {
-		height: 0.75rem;
-		width: 1rem;
-		margin-bottom: 20px;
+		height: 12px;
+		width: 12px;
 	}
 
-	/* Track */
 	::-webkit-scrollbar-track {
-		background: rgba(0, 0, 0, 0.2);
-        margin:10rem;
-        padding-bottom:1rem;
-		border-radius: 5px;
+		background: rgba(255, 255, 255, 0.1);
+		border-radius: var(--radius-sm);
+		margin: var(--space-2);
 	}
 
-	/* Handle */
 	::-webkit-scrollbar-thumb {
-		background-clip: padding-box;
-		background: rgba(255, 255, 255, 0.4);
-
-		border-radius: 5px;
+		background: rgba(255, 255, 255, 0.3);
+		border-radius: var(--radius-sm);
+		transition: background-color 0.2s ease;
 	}
 
-	/* Handle on hover */
 	::-webkit-scrollbar-thumb:hover {
-		background: rgba(255, 255, 255, 0.3);
+		background: rgba(255, 255, 255, 0.5);
+	}
+	
+	@media (max-width: 768px) {
+		padding: var(--space-4);
+		gap: var(--space-3);
 	}
 `;

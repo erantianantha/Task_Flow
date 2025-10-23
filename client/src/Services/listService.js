@@ -2,7 +2,7 @@ import axios from 'axios';
 import { openAlert } from '../Redux/Slices/alertSlice';
 import { setLoading, successCreatingCard,deleteCard } from '../Redux/Slices/listSlice';
 
-const baseUrl = 'http://localhost:3001/card';
+const baseUrl = 'http://localhost:5001/card';
 
 export const createCard = async (title, listId, boardId, dispatch) => {
 	dispatch(setLoading(true));

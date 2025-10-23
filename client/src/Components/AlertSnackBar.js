@@ -5,9 +5,35 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { closeAlert } from "../Redux/Slices/alertSlice";
 import { useHistory } from "react-router-dom";
+import { styled } from "@mui/material/styles";
+
+const StyledAlert = styled(MuiAlert)(({ theme }) => ({
+  backgroundColor: 'var(--bg-glass)',
+  backdropFilter: 'blur(20px)',
+  border: '1px solid var(--border-primary)',
+  borderRadius: 'var(--radius-xl)',
+  color: 'var(--text-primary)',
+  fontWeight: 'var(--font-weight-medium)',
+  fontSize: 'var(--font-size-sm)',
+  boxShadow: 'var(--shadow-2xl)',
+  
+  '& .MuiAlert-icon': {
+    color: 'var(--primary-600)',
+  },
+  
+  '& .MuiAlert-action': {
+    color: 'var(--text-primary)',
+  },
+}));
+
+const StyledSnackbar = styled(Snackbar)(({ theme }) => ({
+  '& .MuiSnackbar-root': {
+    backgroundColor: 'transparent',
+  },
+}));
 
 const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  return <StyledAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 const AlertSnackBar = () => {
@@ -28,7 +54,7 @@ const AlertSnackBar = () => {
 
   return (
     <>
-      <Snackbar
+      <StyledSnackbar
         open={open}
         autoHideDuration={duration}
         onClose={handleClose}
@@ -37,7 +63,7 @@ const AlertSnackBar = () => {
         <Alert onClose={handleClose} severity={severity} sx={{ width: "100%" }}>
           {message}
         </Alert>
-      </Snackbar>
+      </StyledSnackbar>
     </>
   );
 };

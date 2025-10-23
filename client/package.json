@@ -1,7 +1,9 @@
 {
-  "name": "client",
-  "version": "0.1.0",
+  "name": "taskflow-client",
+  "version": "1.0.0",
+  "description": "TaskFlow - Premium Project Management Platform Frontend",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@atlaskit/css-reset": "^6.2.0",
     "@date-io/date-fns": "^2.11.0",
@@ -33,7 +35,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "preview": "serve -s build"
   },
   "eslintConfig": {
     "extends": [
@@ -52,5 +55,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }

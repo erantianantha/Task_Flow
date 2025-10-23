@@ -3,21 +3,30 @@ import { xs } from '../../../../../BreakPoints';
 
 export const Container = styled.div`
 	box-sizing: content-box;
-	border: 1px solid white;
+	border: 1px solid var(--border-primary);
 	height: fit-content;
 	max-height: 98%;
-	min-width: 15rem;
-	width: 15rem;
-	max-width: 16rem;
-	margin: 0rem 0.2rem;
+	min-width: 280px;
+	width: 280px;
+	max-width: 300px;
+	margin: 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	gap: 0.3rem;
-	border-radius: 3px;
-	background-color: #ebecf0;
-	padding: 0.3rem ;	
+	gap: var(--space-4);
+	border-radius: var(--radius-2xl);
+	background: var(--bg-glass);
+	backdrop-filter: blur(20px);
+	padding: var(--space-5);
+	box-shadow: var(--shadow-xl);
+	transition: all var(--duration-300) var(--ease-premium);
+	
+	&:hover {
+		box-shadow: var(--shadow-2xl), var(--glow-primary);
+		transform: translateY(-4px);
+		border-color: var(--border-focus);
+	}
 `;
 
 export const Header = styled.div`
@@ -25,40 +34,54 @@ export const Header = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 0.3rem;
+	gap: var(--space-3);
 `;
 
 export const TitlePlaceholder = styled.div`
 	display: ${(props) => (props.show ? 'none' : 'block')};
 	width: 100%;
-	padding-left: 0.3rem;
+	padding: var(--space-3);
 	border: none;
-	border-radius: 1px;
+	border-radius: var(--radius-lg);
 	background-color: transparent;
-	font-size: 0.85rem;
-	font-weight: 600;
-	color: #000;
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-semibold);
+	color: var(--text-primary);
 	outline: none;
 	cursor: pointer;
+	transition: all var(--duration-300) var(--ease-premium);
+	
+	&:hover {
+		background-color: var(--bg-glass-dark);
+		color: var(--text-accent);
+	}
 `;
 
 export const TitleInput = styled.input`
 	display: ${(props) => (props.show ? 'block' : 'none')};
 	width: 100%;
-	padding-left: 0.3rem;
-	padding-bottom: 0.2rem;
-	border: none;
-	border-radius: 1px;
-	background-color: transparent;
-	font-size: 0.85rem;
-	font-weight: 600;
-	color: #000;
+	padding: var(--space-3);
+	border: 2px solid var(--border-primary);
+	border-radius: var(--radius-lg);
+	background-color: var(--bg-glass);
+	backdrop-filter: blur(10px);
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-semibold);
+	color: var(--text-primary);
 	outline: none;
-	cursor: pointer;
+	cursor: text;
+	transition: all var(--duration-300) var(--ease-premium);
+	
 	&:focus {
-		background-color: white;
-		outline: 2px solid #0079bf;
-		cursor: text;
+		border-color: var(--border-focus);
+		box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1), var(--shadow-lg);
+		background-color: var(--bg-glass-hover);
+		transform: translateY(-2px);
+	}
+	
+	&::placeholder {
+		color: var(--text-tertiary);
+		font-weight: var(--font-weight-normal);
 	}
 `;
 
@@ -70,36 +93,39 @@ export const CardContainer = styled.div`
 
 export const CardWrapper = styled.div`
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	flex-direction: column;
 	align-items: flex-start;
 	box-sizing: content-box;
 	overflow-x: hidden;
 	overflow-y: auto;
-	height:fit-content;
+	height: fit-content;
 	max-height: ${props=> props.dock? "73.5vh" :"70.6vh"};
 	justify-content: flex-start;
-	padding: 0.1rem 0.1rem 0.1rem 0rem;		
+	padding: var(--space-1);
 	width: 100%;
+	gap: var(--space-2);
+	
 	${xs({
 		maxHeight: props=> props.dock? "74.6vh" :"70.6vh",
 	})}
+	
 	::-webkit-scrollbar {
-		-webkit-appearance: none;
-		height: 0.75rem;
-		width: 0.5rem;	
+		width: 6px;
 	}
+	
 	::-webkit-scrollbar-track {
-		background: rgba(255, 255, 255, 0.4);		
-		margin-left:5px;
-		border-radius: 5px;
+		background: var(--bg-tertiary);
+		border-radius: var(--radius-sm);
 	}
+	
 	::-webkit-scrollbar-thumb {
-		background: rgba(0, 0, 0, 0.2);
-		border-radius: 5px;
+		background: var(--border-secondary);
+		border-radius: var(--radius-sm);
+		transition: background-color var(--duration-300) var(--ease-premium);
 	}
+	
 	::-webkit-scrollbar-thumb:hover {
-		background: rgba(0, 0, 0, 0.2);
+		background: var(--border-tertiary);
 	}
 `;
 
@@ -110,50 +136,64 @@ export const FooterButton = styled.button`
 	justify-content: flex-start;
 	background-color: transparent;
 	border: none;
-	border-radius: 3px;
+	border-radius: var(--radius-lg);
 	align-self: flex-end;
 	justify-self: flex-end;
 	cursor: pointer;
-	gap: 0.3rem;
-	color: #636363;
-	transition: 150ms ease-in;
+	gap: var(--space-2);
+	color: var(--text-tertiary);
+	padding: var(--space-3);
+	transition: all var(--duration-300) var(--ease-premium);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	
 	&:hover {
-		background-color: rgba(0, 0, 0, 0.1);
+		background-color: var(--bg-glass-dark);
+		color: var(--text-accent);
+		transform: translateX(4px);
 	}
 `;
 
 export const Span = styled.span`
-	font-size: 0.85rem;
+	font-size: var(--font-size-sm);
 `;
 
 export const AddTitleCardContainer = styled.div`
 	box-sizing: border-box;
-	margin-top: 0.2rem;
-	padding: 0rem 0.2rem;			
-	min-width: 14.7rem;
-	width:100%;
+	margin-top: var(--space-2);
+	padding: 0;
+	min-width: 100%;
+	width: 100%;
 	display: flex;
 	flex-flow: column wrap;
-	gap: 0.5rem;
+	gap: var(--space-3);
 `;
 
 export const TitleNewCardInput = styled.textarea`
-	border: 2px solid transparent;
-	border-radius:3px;
+	border: 2px solid var(--border-primary);
+	border-radius: var(--radius-lg);
 	resize: none;
-	font-size: 0.75rem;
-	color: #000;
-	padding: 0.4rem 0.5rem;
+	font-size: var(--font-size-sm);
+	color: var(--text-primary);
+	padding: var(--space-4);
 	min-height: 4rem;
 	max-height: 7rem;	
 	height: ${(props) => props.height};
-	transition: 500ms ease-in;
+	transition: all var(--duration-300) var(--ease-premium);
 	outline: none;
-	&:focus{
-		border: 2px solid #0079bf;
+	background-color: var(--bg-glass);
+	backdrop-filter: blur(10px);
+	box-shadow: var(--shadow-md);
+	
+	&:focus {
+		border-color: var(--border-focus);
+		box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1), var(--shadow-lg);
+		background-color: var(--bg-glass-hover);
+		transform: translateY(-2px);
 	}
+	
 	&::placeholder {
-		font-weight: 600;
-		color: rgba(0,0,0,0.5);
+		font-weight: var(--font-weight-medium);
+		color: var(--text-tertiary);
 	}
 `;

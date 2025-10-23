@@ -13,21 +13,57 @@ import CardLoadingSvg from '../Images/cardLoading.svg';
 const BootstrapButton = styled(Button)({
 	boxShadow: 'none',
 	textTransform: 'none',
-	gap: '0.25rem',
-	padding: '0.25rem 0.5rem',
-	color: 'white',
-	backgroundColor: 'transparent',
-	border: 'none',
+	gap: '0.5rem',
+	padding: '0.5rem 1rem',
+	color: 'var(--text-primary)',
+	backgroundColor: 'var(--bg-glass)',
+	backdropFilter: 'blur(10px)',
+	border: '1px solid var(--border-primary)',
+	borderRadius: 'var(--radius-lg)',
 	display: 'flex',
 	flexDirection: 'row',
 	alignItems: 'center',
 	justifyContent: 'space-around',
+	fontWeight: 'var(--font-weight-medium)',
+	fontSize: 'var(--font-size-sm)',
+	transition: 'all var(--duration-300) var(--ease-premium)',
 
 	'&:hover': {
-		backgroundColor: 'rgba(255, 255, 255, 0.2)',
+		backgroundColor: 'var(--bg-glass-hover)',
+		borderColor: 'var(--border-secondary)',
+		transform: 'translateY(-2px)',
+		boxShadow: 'var(--shadow-md)',
 	},
 	'&:active': {
-		backgroundColor: 'rgba(255, 255, 255, 0.2)',
+		backgroundColor: 'var(--bg-glass-hover)',
+		transform: 'translateY(0px)',
+	},
+});
+
+const StyledMenu = styled(Menu)({
+	'& .MuiPaper-root': {
+		backgroundColor: 'var(--bg-glass)',
+		backdropFilter: 'blur(20px)',
+		border: '1px solid var(--border-primary)',
+		borderRadius: 'var(--radius-xl)',
+		boxShadow: 'var(--shadow-2xl)',
+		marginTop: '8px',
+		minWidth: '200px',
+	},
+});
+
+const StyledMenuItem = styled(MenuItem)({
+	borderRadius: 'var(--radius-md)',
+	margin: '4px 8px',
+	padding: '12px 16px',
+	fontSize: 'var(--font-size-sm)',
+	fontWeight: 'var(--font-weight-medium)',
+	color: 'var(--text-primary)',
+	transition: 'all var(--duration-300) var(--ease-premium)',
+	
+	'&:hover': {
+		backgroundColor: 'var(--bg-glass-hover)',
+		transform: 'translateX(4px)',
 	},
 });
 
@@ -38,16 +74,22 @@ const LoadingBox = styledComponent.div`
 	background-image: url(${(props) => props.image});
 	background-position: center;
 	background-repeat: no-repeat;
+	border-radius: var(--radius-lg);
+	margin: 8px;
 `;
 
 const Span = styledComponent.span`
-font-size: 0.85rem;
-display:block;
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	color: var(--text-primary);
+	display: block;
 `;
 
 const StyledIcon = styled(DownIcon)({
 	display: 'block',
-	fontSize: '1.3rem',
+	fontSize: '1.2rem',
+	color: 'var(--text-secondary)',
+	transition: 'transform var(--duration-300) var(--ease-premium)',
 });
 
 export default function DropdownMenu(props) {
@@ -64,10 +106,6 @@ export default function DropdownMenu(props) {
 		setLoading(false);
 	};
 
-/* 	React.useEffect(() => {
-		if (!Object.keys(boardsData).length) getBoards(dispatch);
-	}, []); */
-
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
@@ -83,11 +121,11 @@ export default function DropdownMenu(props) {
 			>
 				<Span>{props.title}</Span>
 				<Span>
-					<StyledIcon />
+					<StyledIcon sx={{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }} />
 				</Span>
 			</BootstrapButton>
 			{Object.keys(boardsData).length > 0 && (
-				<Menu
+				<StyledMenu
 					id='demo-positioned-menu'
 					aria-labelledby='demo-positioned-button'
 					anchorEl={anchorEl}
@@ -105,7 +143,7 @@ export default function DropdownMenu(props) {
 					{!loading ? (
 						boardsData.map((item) => {
 							return (
-								<MenuItem
+								<StyledMenuItem
 									key={item._id}
 									onClick={() => {
 										setAnchorEl(null);
@@ -113,13 +151,13 @@ export default function DropdownMenu(props) {
 									}}
 								>
 									<Span>{item.title}</Span>
-								</MenuItem>
+								</StyledMenuItem>
 							);
 						})
 					) : (
 						<LoadingBox image={CardLoadingSvg} />
 					)}
-				</Menu>
+				</StyledMenu>
 			)}
 		</div>
 	);

@@ -8,18 +8,31 @@ const Container = styled.div`
   min-width: 6rem;
   display: flex;
   flex-direction: row;
-  gap: 0.3rem;
+  gap: var(--space-2);
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.3);
-  height: 2rem;
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+  height: 2.5rem;
   box-sizing: border-box;
-  border-radius: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 0.1rem 0.5rem;
-  color: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-primary);
+  padding: var(--space-2) var(--space-3);
+  color: var(--text-primary);
+  transition: all var(--duration-300) var(--ease-premium);
+  
   &:hover {
-    background-color: rgba(255, 255, 255, 0.4);
+    background: var(--bg-glass-hover);
+    border-color: var(--border-secondary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
   }
+  
+  &:focus-within {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1), var(--shadow-lg);
+    background: var(--bg-glass-hover);
+  }
+  
   ${sm({
     width: "10rem",
   })}
@@ -27,32 +40,46 @@ const Container = styled.div`
     width: "26.8vw",
   })}
 `;
+
 const Input = styled.input`
   box-sizing: content-box;
-  font-size: 0.85rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
   border: none;
-  color: white;
+  color: var(--text-primary);
   background-color: transparent;
   outline: none;
   height: 1rem;
   overflow: hidden;
+  width: 100%;
+  
   &::placeholder {
-    color: white;
+    color: var(--text-tertiary);
+    font-weight: var(--font-weight-normal);
   }
+  
   &:focus {
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
+    
     &::placeholder {
-      color: transparent;
+      color: var(--text-tertiary);
     }
   }
 `;
 
 const Icon = styled.img`
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+  transition: opacity var(--duration-300) var(--ease-premium);
+  
+  ${Container}:hover & {
+    opacity: 1;
+  }
+  
   ${xs({
-    width: "20px",
-    height: "20px",
+    width: "18px",
+    height: "18px",
   })}
 `;
 
@@ -61,7 +88,7 @@ const SearchBar = (props) => {
   return (
     <Container>
       <Icon src={SearchIcon} />
-      <Input placeholder="Search" value={searchString} onChange={e=>setSearchString(e.target.value)}/>
+      <Input placeholder="Search boards..." value={searchString} onChange={e=>setSearchString(e.target.value)}/>
     </Container>
   );
 };

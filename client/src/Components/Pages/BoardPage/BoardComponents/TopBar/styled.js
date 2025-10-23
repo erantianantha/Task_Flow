@@ -2,59 +2,75 @@ import styled from 'styled-components';
 import { xs } from '../../../../../BreakPoints';
 
 export const TopBar = styled.div`
-	height: 52px;
+	height: 70px;
 	width: 100%;
 	display: flex;
-	flex-direction: column;
-	align-items: space-between;
-	padding: 0rem 1rem;
-	justify-content: center;
+	flex-direction: row;
+	align-items: center;
+	padding: 0 var(--space-8);
+	justify-content: space-between;
 	flex-wrap: wrap;
-	gap: 0.3rem;
+	gap: var(--space-6);
+	background: var(--bg-glass);
+	backdrop-filter: blur(20px);
+	border-bottom: 1px solid var(--border-primary);
+	box-shadow: var(--shadow-sm);
 
 	${xs({
-		gap: '0.1rem',
+		gap: 'var(--space-3)',
+		padding: '0 var(--space-4)',
+		height: '60px',
 	})}
 `;
 
 export const LeftWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
-	flex: 3;
-	width: 75%;
+	flex: 1;
 	align-items: center;
 	justify-content: flex-start;
 	height: 100%;
-	gap: 1rem;
+	gap: var(--space-4);
 `;
+
 export const RightWrapper = styled.div`
 	display: flex;
-	flex: 1;
-	height: 100%;
 	flex-direction: row;
 	align-items: center;
 	justify-content: flex-end;
+	height: 100%;
+	gap: var(--space-3);
 `;
 
 export const InviteButton = styled.button`
 	display: flex;
 	border: none;
-	height: 2rem;
+	height: 2.5rem;
 	color: white;
-	padding: 0rem 1rem;
+	padding: 0 var(--space-4);
 	align-items: center;
-	gap: 0.5rem;
-	border-radius: 3px;
-	background-color: #0079bf;
+	gap: var(--space-2);
+	border-radius: var(--radius-md);
+	background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
 	cursor: pointer;
-	transition: 250ms ease;
+	transition: all 0.2s ease;
+	font-size: var(--font-size-sm);
+	font-weight: 600;
+	box-shadow: var(--shadow-sm);
+	
 	&:hover {
-		background-color: #00599f;
+		background: linear-gradient(135deg, var(--primary-600), var(--primary-800));
+		transform: translateY(-1px);
+		box-shadow: var(--shadow-md);
+	}
+	
+	&:active {
+		transform: translateY(0);
 	}
 `;
 
 export const TextSpan = styled.span`
-	font-size: 0.85rem;
+	font-size: var(--font-size-sm);
 	font-weight: 600;
 	${xs({
 		display: 'none',
@@ -62,44 +78,49 @@ export const TextSpan = styled.span`
 `;
 
 export const BoardNameInput = styled.input`
-	height: 1.75rem;
-	background-color: rgba(255, 255, 255, 0.25);
-	border: none;
-	border-radius: 1px;
-	font-size: 1.1rem;
-	text-align: center;
-	min-width: 6.5rem;
-	max-width: 10rem;
+	height: 3rem;
+	background: var(--bg-glass-dark);
+	border: 2px solid var(--border-primary);
+	border-radius: var(--radius-lg);
+	font-size: var(--font-size-xl);
+	text-align: left;
+	padding: 0 var(--space-4);
+	min-width: 8rem;
+	max-width: 15rem;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	width: ${(props) => props.value.length * 0.75 + 'rem'};
-	font-weight: 600;
-	color: white;
-	outline: 2px solid rgba(255, 255, 255, 0.25);
-	transition: 250ms ease;
+	width: ${(props) => Math.max(props.value.length * 0.6 + 2, 8) + 'rem'};
+	font-weight: var(--font-weight-bold);
+	color: var(--text-primary);
+	outline: none;
+	transition: all var(--duration-300) var(--ease-premium);
 	cursor: pointer;
+	backdrop-filter: blur(10px);
+	
 	&:focus {
-		background-color: white;
-		outline: 2px solid #0079bf;
-		color: black;
+		background: var(--bg-glass-hover);
+		border-color: var(--border-focus);
+		color: var(--text-primary);
 		cursor: text;
+		box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1), var(--shadow-lg);
+		transform: translateY(-2px);
 	}
-	&:focus:hover {
-		background-color: white;
-		outline: 2px solid #0079bf;
-		color: black;
-		cursor: text;
-	}
+	
 	&:hover {
-		background-color: rgba(255, 255, 255, 0.5);
-		outline: 2px solid rgba(255, 255, 255, 0.5);
+		background: var(--bg-glass);
+		border-color: var(--border-secondary);
+		transform: translateY(-1px);
 	}
+	
 	&::placeholder {
-		color: #d0d0d0;
+		color: var(--text-tertiary);
+		font-weight: var(--font-weight-medium);
 	}
 
 	${xs({
-		maxWidth: '8rem',
+		maxWidth: '10rem',
+		fontSize: 'var(--font-size-lg)',
+		height: '2.5rem',
 	})}
 `;
