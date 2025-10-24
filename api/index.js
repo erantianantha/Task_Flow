@@ -17,7 +17,8 @@ app.use(cors({
 		'http://localhost:3000', 
 		'http://localhost:3001', 
 		'https://task-flow-rose-nine.vercel.app',
-		'https://*.vercel.app',
+		'https://task-flow-rose-nine.vercel.app',
+		/^https:\/\/.*\.vercel\.app$/,
 		'https://vercel.app'
 	],
 	credentials: true,
