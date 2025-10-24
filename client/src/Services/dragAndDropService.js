@@ -50,7 +50,7 @@ export const updateCardOrder = async (props, dispatch) => {
 	// Server side requests
 
 	submitCall = submitCall.then(() =>
-		apiClient.post("/list" + '/change-card-order', {
+			apiClient.post("/list/change-card-order", {
 			boardId: props.boardId,
 			sourceId: props.sourceId,
 			destinationId: props.destinationId,
@@ -87,7 +87,7 @@ export const updateListOrder = async (props, dispatch) => {
 
 	// Server side requests
 	submitCall = submitCall.then(() =>
-		apiClient.post("/list" + '/change-list-order', {
+			apiClient.post("/list/change-list-order", {
 			boardId: props.boardId,
 			sourceIndex: props.sourceIndex,
 			destinationIndex: props.destinationIndex,
