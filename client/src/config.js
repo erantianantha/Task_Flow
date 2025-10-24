@@ -4,9 +4,9 @@ export const API_CONFIG = {
   development: {
     API_URL: 'http://localhost:5001'
   },
-  // For production - you'll need to update this with your actual backend URL
+  // For production - Vercel API routes
   production: {
-    API_URL: process.env.REACT_APP_API_URL || 'https://YOUR-BACKEND-URL.railway.app'
+    API_URL: process.env.REACT_APP_API_URL || '/api'
   }
 };
 

@@ -1,0 +1,15 @@
+{
+  "name": "taskflow-api",
+  "version": "1.0.0",
+  "description": "TaskFlow API for Vercel",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express-unless": "^0.5.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
