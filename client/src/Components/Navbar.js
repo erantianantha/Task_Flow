@@ -4,7 +4,7 @@ import DropdownMenu from './DropdownMenu';
 import SearchBar from './SearchBar';
 import { xs } from '../BreakPoints';
 import ProfileBox from './ProfileBox';
-// import ThemeToggle from './ThemeToggle'; // Temporarily disabled
+// ThemeToggle temporarily disabled for deployment
 import { useHistory } from 'react-router-dom';
 
 const Container = styled.div`

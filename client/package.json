@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "NODE_OPTIONS=\"--openssl-legacy-provider\" react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "preview": "serve -s build"
@@ -57,6 +57,6 @@
     ]
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": "18.x"
   }
 }
