@@ -12,7 +12,7 @@
   "author": "TaskFlow Team",
   "license": "MIT",
   "engines": {
-    "node": ">=16.0.0"
+    "node": "22.x"
   },
   "devDependencies": {
     "nodemon": "^2.0.14"
