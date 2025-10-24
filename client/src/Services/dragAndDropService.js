@@ -1,9 +1,8 @@
-import axios from 'axios';
+import apiClient from './axiosConfig';
 import { updateCardDragDrop, updateListDragDrop } from '../Redux/Slices/listSlice';
 import { openAlert } from '../Redux/Slices/alertSlice';
 
-import { API_BASE_URL } from '../config';
-const dragDropBaseUrl = `${API_BASE_URL}/list`;
+// Using apiClient with base URL configured
 
 //  Create promise to queue requests
 let submitCall = Promise.resolve();
@@ -51,7 +50,7 @@ export const updateCardOrder = async (props, dispatch) => {
 	// Server side requests
 
 	submitCall = submitCall.then(() =>
-		axios.post(dragDropBaseUrl + '/change-card-order', {
+		apiClient.post("/list" + '/change-card-order', {
 			boardId: props.boardId,
 			sourceId: props.sourceId,
 			destinationId: props.destinationId,
@@ -88,7 +87,7 @@ export const updateListOrder = async (props, dispatch) => {
 
 	// Server side requests
 	submitCall = submitCall.then(() =>
-		axios.post(dragDropBaseUrl + '/change-list-order', {
+		apiClient.post("/list" + '/change-list-order', {
 			boardId: props.boardId,
 			sourceIndex: props.sourceIndex,
 			destinationIndex: props.destinationIndex,

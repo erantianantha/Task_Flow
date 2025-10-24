@@ -1,14 +1,13 @@
-import axios from 'axios';
+import apiClient from './axiosConfig';
 import { openAlert } from '../Redux/Slices/alertSlice';
 import { setLoading, successCreatingCard,deleteCard } from '../Redux/Slices/listSlice';
 
-import { API_BASE_URL } from '../config';
-const listBaseUrl = `${API_BASE_URL}/card`;
+// Using apiClient with base URL configured
 
 export const createCard = async (title, listId, boardId, dispatch) => {
 	dispatch(setLoading(true));
 	try {
-		const updatedList = await axios.post(listBaseUrl + '/create', { title: title, listId: listId, boardId: boardId });
+		const updatedList = await apiClient.post("/card" + '/create', { title: title, listId: listId, boardId: boardId });
 		dispatch(successCreatingCard({ listId: listId, updatedList: updatedList.data }));
 		dispatch(setLoading(false));
 	} catch (error) {
@@ -25,7 +24,7 @@ export const createCard = async (title, listId, boardId, dispatch) => {
 export const cardDelete = async(listId,boardId,cardId,dispatch)=>{
 	try {
 		await dispatch(deleteCard({listId,cardId}));
-		await axios.delete(listBaseUrl + "/"+boardId+"/"+listId + "/" + cardId+ "/delete-card");
+		await apiClient.delete("/card" + "/"+boardId+"/"+listId + "/" + cardId+ "/delete-card");
 	} catch (error) {
 		dispatch(
 			openAlert({
