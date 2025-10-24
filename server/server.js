@@ -17,7 +17,7 @@ app.use(cors({
 		'http://localhost:3000', 
 		'http://localhost:3001', 
 		'https://task-flow-rose-nine.vercel.app',
-		'https://taskflow-frontend.vercel.app'
+		'https://YOUR-VERCEL-URL.vercel.app'
 	],
 	credentials: true,
 	methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
