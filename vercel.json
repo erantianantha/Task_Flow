@@ -5,9 +5,7 @@
       "src": "client/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "build",
-        "installCommand": "npm install --legacy-peer-deps",
-        "buildCommand": "NODE_OPTIONS=\"--openssl-legacy-provider\" npm run build"
+        "distDir": "build"
       }
     },
     {
