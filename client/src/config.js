@@ -6,7 +6,7 @@ export const API_CONFIG = {
   },
   // For production - you'll need to update this with your actual backend URL
   production: {
-    API_URL: process.env.REACT_APP_API_URL || 'https://your-backend-url.vercel.app'
+    API_URL: process.env.REACT_APP_API_URL || 'https://taskflow-backend-production.up.railway.app'
   }
 };
 
@@ -19,3 +19,5 @@ export const API_BASE_URL = isDevelopment
   : API_CONFIG.production.API_URL;
 
 console.log('API Base URL:', API_BASE_URL);
+console.log('Environment:', process.env.NODE_ENV);
+console.log('Is Development:', isDevelopment);
