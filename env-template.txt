@@ -1,0 +1,16 @@
+# Copy this to .env.local for local development
+# Copy this to Vercel Environment Variables for production
+
+# MongoDB Connection
+MONGO_URI=mongodb+srv://ananthadatta0623_db_user:wKUNFjXUL6tIzKUI@cluster0.icrm7fc.mongodb.net/project_mgmt_dashboard?retryWrites=true&w=majority&appName=Cluster0
+
+# Server Configuration
+PORT=5001
+
+# JWT Configuration
+JWT_SECRET=cf92e7899ec04e88d5be0c8a7adfbde8d0c1b601a45394cfee50451cbea626e872d1787b083d4025ebf61cbba8f0e9ba9b50ae4aa3c4605ee1dd68b471ae2de4
+TOKEN_EXPIRE_TIME=7d
+
+# Frontend Configuration
+REACT_APP_API_URL=http://localhost:5001
+NODE_OPTIONS=--openssl-legacy-provider
