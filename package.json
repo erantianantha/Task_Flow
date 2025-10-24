@@ -8,10 +8,10 @@
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd server && npm run dev",
     "client": "cd client && npm start",
-    "build": "cd client && npm install && NODE_OPTIONS=\"--openssl-legacy-provider\" npm run build",
+    "build": "cd client && npm install --legacy-peer-deps && NODE_OPTIONS=\"--openssl-legacy-provider\" npm run build",
     "setup": "./setup.sh",
     "dev": "npm run start",
-    "vercel-build": "cd client && npm install && NODE_OPTIONS=\"--openssl-legacy-provider\" npm run build"
+    "vercel-build": "cd client && npm install --legacy-peer-deps && NODE_OPTIONS=\"--openssl-legacy-provider\" npm run build"
   },
   "keywords": [
     "project-management",

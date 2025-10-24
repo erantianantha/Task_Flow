@@ -5,7 +5,7 @@ import Store from "./Redux/Store";
 import {Provider} from "react-redux";
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import '@atlaskit/css-reset';
+// @atlaskit/css-reset removed due to React version conflict
 import './Components/Modals/EditCardModal/Popovers/Date/DateRange.css';
 import './index.css';
 
