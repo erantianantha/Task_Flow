@@ -13,7 +13,8 @@ import {
 } from "../Redux/Slices/userSlice";
 import { openAlert } from "../Redux/Slices/alertSlice";
 import setBearer from "../Utils/setBearer";
-const baseUrl = "http://localhost:5001/user/";
+import { API_BASE_URL } from '../config';
+const userBaseUrl = `${API_BASE_URL}/user/`;
 
 export const register = async (
   { name, surname, email, password, repassword },
@@ -29,7 +30,7 @@ export const register = async (
     );
   } else {
     try {
-      const res = await axios.post(`${baseUrl}register`, {
+      const res = await axios.post(`${userBaseUrl}register`, {
         name,
         surname,
         email,
@@ -60,7 +61,7 @@ export const register = async (
 export const login = async ({ email, password }, dispatch) => {
   dispatch(loginStart());
   try {
-    const res = await axios.post(baseUrl + "login", { email, password });
+    const res = await axios.post(userBaseUrl + "login", { email, password });
     const { user, message } = res.data;
     localStorage.setItem("token", user.token);
     setBearer(user.token);
@@ -91,7 +92,7 @@ export const loadUser = async (dispatch) => {
   if (!localStorage.token) return dispatch(loadFailure());
   setBearer(localStorage.token);
   try {
-    const res = await axios.get(baseUrl + "get-user");
+    const res = await axios.get(userBaseUrl + "get-user");
     dispatch(loadSuccess({ user: res.data }));
   } catch (error) {
     dispatch(loadFailure());
@@ -112,7 +113,7 @@ export const getUserFromEmail = async (email, dispatch) => {
     }
     
   try {
-    const res = await axios.post(baseUrl + "get-user-with-email", { email });
+    const res = await axios.post(userBaseUrl + "get-user-with-email", { email });
     dispatch(fetchingFinish());
     return res.data;
   } catch (error) {
