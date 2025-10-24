@@ -659,7 +659,7 @@ export const attachmentUpdate = async (cardId, listId, boardId, attachmentId, li
 
 		submitCall = submitCall.then(() =>
 			apiClient.put(
-				"/card" + '/' + boardId + '/' + listId + '/' + cardId + '/' + attachmentId + '/update-attachment',
+				`/card/${boardId}/${listId}/${cardId}/${attachmentId}/update-attachment`,
 				{ link: link, name: name }
 			)
 		);
