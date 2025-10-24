@@ -9,14 +9,14 @@
       }
     },
     {
-      "src": "server/server.js",
+      "src": "api/index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/server/server.js"
+      "dest": "/api/index.js"
     },
     {
       "src": "/(.*)",
@@ -24,6 +24,9 @@
     }
   ],
   "env": {
-    "NODE_OPTIONS": "--openssl-legacy-provider"
+    "NODE_OPTIONS": "--openssl-legacy-provider",
+    "MONGO_URI": "mongodb+srv://ananthadatta0623_db_user:wKUNFjXUL6tIzKUI@cluster0.icrm7fc.mongodb.net/project_mgmt_dashboard?retryWrites=true&w=majority&appName=Cluster0",
+    "JWT_SECRET": "cf92e7899ec04e88d5be0c8a7adfbde8d0c1b601a45394cfee50451cbea626e872d1787b083d4025ebf61cbba8f0e9ba9b50ae4aa3c4605ee1dd68b471ae2de4",
+    "TOKEN_EXPIRE_TIME": "7d"
   }
 }
