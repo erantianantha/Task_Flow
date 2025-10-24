@@ -6,7 +6,7 @@ export const API_CONFIG = {
   },
   // For production - you'll need to update this with your actual backend URL
   production: {
-    API_URL: process.env.REACT_APP_API_URL || 'https://taskflow-backend-production.up.railway.app'
+    API_URL: process.env.REACT_APP_API_URL || 'https://YOUR-BACKEND-URL.railway.app'
   }
 };
 
